@@ -17,6 +17,8 @@
 -doctitle
 'Hudson Darcs plugin 0.3.0 Test API'
 -link
+'../apidocs'
+-link
 'http://java.sun.com/j2se/1.5.0/docs/api'
 -use
 -version
