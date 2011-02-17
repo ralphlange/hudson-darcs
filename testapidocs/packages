@@ -1,2 +1,2 @@
-org.jvnet.hudson.plugins.darcs.browsers
-org.jvnet.hudson.plugins.darcs
+org.jenkinsci.plugins.darcs.browsers
+org.jenkinsci.plugins.darcs
