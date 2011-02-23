@@ -14,7 +14,6 @@ import hudson.Launcher;
 import hudson.Launcher.ProcStarter;
 import hudson.util.ArgumentListBuilder;
 
-import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import org.kohsuke.stapler.framework.io.ByteBuffer;
 
