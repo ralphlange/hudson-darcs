@@ -10,18 +10,18 @@
 
 package org.jenkinsci.plugins.darcs;
 
-//import hudson.FilePath;
 import hudson.Launcher;
 import hudson.Launcher.ProcStarter;
-//import hudson.model.TaskListener;
 import hudson.util.ArgumentListBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
+import org.kohsuke.stapler.framework.io.ByteBuffer;
 
 /**
  *
  * @author Sven Strittmatter <ich@weltraumschaf.de>
+ * @author Ralph Lange <Ralph.Lange@gmx.de>
  */
 public class DarcsCmd {
 
@@ -57,7 +57,7 @@ public class DarcsCmd {
         return proc;
     }
 
-    private ByteArrayOutputStream getChanges(String repo, boolean summarize, int n) throws DarcsCmdException {
+    private ByteBuffer getChanges(String repo, boolean summarize, int n) throws DarcsCmdException {
         ArgumentListBuilder args = new ArgumentListBuilder();
         args.add(darcsExe)
             .add("changes")
@@ -71,7 +71,7 @@ public class DarcsCmd {
         }
 
         ProcStarter proc = createProc(args);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ByteBuffer baos = new ByteBuffer();
         proc.stdout(baos);
 
         try {
@@ -87,15 +87,15 @@ public class DarcsCmd {
         return baos;
     }
 
-    public ByteArrayOutputStream lastSummarizedChanges(String repo, int n) throws DarcsCmdException {
+    public ByteBuffer lastSummarizedChanges(String repo, int n) throws DarcsCmdException {
         return getChanges(repo, true, n);
     }
 
-    public ByteArrayOutputStream allSummarizedChanges(String repo) throws DarcsCmdException {
+    public ByteBuffer allSummarizedChanges(String repo) throws DarcsCmdException {
         return getChanges(repo, true, 0);
     }
 
-    public ByteArrayOutputStream allChanges(String repo) throws DarcsCmdException {
+    public ByteBuffer allChanges(String repo) throws DarcsCmdException {
         return getChanges(repo, false, 0);
     }
 
@@ -107,7 +107,7 @@ public class DarcsCmd {
             .add("--count");
 
         ProcStarter proc = createProc(args);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ByteBuffer baos = new ByteBuffer();
         proc.stdout(baos);
 
         try {
