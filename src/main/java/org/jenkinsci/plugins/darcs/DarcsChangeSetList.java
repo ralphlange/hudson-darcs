@@ -47,9 +47,9 @@ public class DarcsChangeSetList extends ChangeLogSet<DarcsChangeSet> {
         return getLogs().iterator();
     }
 
-	public int size() {
-		return getLogs().size();
-	}
+    public int size() {
+        return getLogs().size();
+    }
 
     public List<DarcsChangeSet> getLogs() {
         return changeSets;
